@@ -7,6 +7,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import shop.mtcoding.blog.model.jobs.JobResponse;
 import shop.mtcoding.blog.model.jobs.JobsRepository;
+import shop.mtcoding.blog.model.resume.Resume;
+import shop.mtcoding.blog.model.resume.ResumeResponse;
+import shop.mtcoding.blog.model.resume.ResumeService;
 import shop.mtcoding.blog.model.skill.Skill;
 import shop.mtcoding.blog.model.skill.SkillRepository;
 
@@ -18,9 +21,13 @@ import java.util.List;
 public class UserController {
     private final UserService userService;
     private final HttpSession session;
+    private final ResumeService resumeService;
 
     @GetMapping("/")
     public String index(HttpServletRequest request) {
+        List<ResumeResponse.ResumeDTO> resumes = resumeService.findAll();
+        request.setAttribute("resumeList",resumes);
+
         return "index";
     }
 

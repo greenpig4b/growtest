@@ -177,20 +177,28 @@
         <div class="info" style=" display: grid; grid-gap: 10px; grid-template-columns: 1fr 1fr 1fr; grid-gap: 20px; margin: 50px 0;">
 
                 <!--공고-->
+                {{#resumeList}}
                 <div class="card">
                     <a href="/jobs/jobsDetail/1">
                         <div class="card-body">
+
                             <div>
                                 <img class="card-img-top" src="/upload/logo.png" alt="" srcset="" style="height: 5em; width: 180px; padding:5px; text-align: center;">
                                 <div class="mb-2 ft-16">compName</div>
-                                <div class="point-ft ft-22 fw-600 mb-10 jobs-title">title</div>
-                                <!--기술스킬-->
-                                <div class="d-flex">
-                                        <div class="skill-wrap mr-5">
-                                            <span class="mint-color">name</span>
-                                        </div>
+                                <div class="point-ft ft-22 fw-600 mb-10 jobs-title">{{title}}</div>
 
+                                <div class="d-flex">
+                                    <div class="skill-wrap mr-5">
+                                        <span class="mint-color">{{user.myName}}</span>
+                                    </div>
                                 </div>
+                                <!--기술스킬-->
+                                <div class="skill-wrap">
+                                    {{#skillList}}
+                                        <span class="{{color}}">{{name}}</span>
+                                    {{/skillList}}
+                                </div>
+
                                 <!--career, address info-->
                                 <div class="d-flex">
                                     <div class="career">career</div>
@@ -221,6 +229,7 @@
                         </div>
                     </a>
                 </div>
+                {{/resumeList}}
                 <script>
                     // 옵션 선택 시 URL 변경
                     document.getElementById("area").addEventListener("change", function () {

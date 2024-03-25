@@ -6,6 +6,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.ColumnDefault;
+import shop.mtcoding.blog.model.resume.ResumeResponse;
 
 import java.sql.Date;
 import java.sql.Timestamp;
@@ -57,6 +58,24 @@ public class User {
         this.role = role;
         this.createdAt = createdAt;
         this.imgFileName = imgFileName;
+    }
+
+    public ResumeResponse.UserDTO toDTO(){
+        return ResumeResponse.UserDTO.builder()
+                .id(this.id)
+                .email(this.email)
+                .myName(this.myName)
+                .phone(this.phone)
+                .address(this.address)
+                .birth(this.birth)
+                .businessNumber(this.businessNumber)
+                .photo(this.photo)
+                .compName(this.compName)
+                .homepage(this.homepage)
+                .role(this.role)
+                .createdAt(this.createdAt)
+                .imgFileName(this.imgFileName)
+                .build();
     }
 }
 

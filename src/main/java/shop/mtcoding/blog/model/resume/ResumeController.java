@@ -22,7 +22,7 @@ public class ResumeController {
         return "/resume/manage-resume";
     }
 
-    @GetMapping("/resume/{id}/write-resume-form")
+    @GetMapping("/resume/write-resume-form")
     public String writeResumeForm() {
 
         return "/resume/write-resume-form";
@@ -42,7 +42,8 @@ public class ResumeController {
     }
 
     @PostMapping("/resume/save")
-    public String save() {
+    public String save(ResumeRequest.SaveDTO reqDTO) {
+        resumeService.save(reqDTO);
 
         // return 부분 manage-resume id 안 받나..? 아무튼 수정해야함. 본인이 작업해보고 수정하길
         return "redirect:/";
